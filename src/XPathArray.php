@@ -192,4 +192,42 @@ class XPathArray
         }
     }
 
+    /**
+     * @author Christian Dangl
+     * @param string $xpath
+     * @param float|null $default
+     * @return float
+     * @throws InvalidTypeException
+     * @throws XPathNotFoundException
+     */
+    public function getFloat(string $xpath, float $default = null): float
+    {
+        # no default provided, so use pass
+        # on our exceptions without catching it
+        if ($default === null) {
+            $value = $this->parser->getValue($xpath, $this->data);
+
+            if (is_float($value)) {
+                return (float)$value;
+            }
+
+            throw new InvalidTypeException('Value for XPath is no Float');
+        }
+
+        # if we have a default, make sure to catch
+        # the not found exception and return the default
+        try {
+            $value = $this->parser->getValue($xpath, $this->data);
+
+            if (is_float($value)) {
+                return (float)$value;
+            }
+
+            return $default;
+
+        } catch (XPathNotFoundException $ex) {
+            return $default;
+        }
+    }
+
 }
