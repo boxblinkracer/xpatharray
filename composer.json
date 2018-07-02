@@ -1,0 +1,22 @@
+{
+  "name": "boxblinkracer/xpatharray",
+  "description": "XPath Access for Arrays",
+  "keywords": ["array", "php", "xpath"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christian Dangl"
+    }
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "XPathArray\\": "src"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.2"
+  }
+}
