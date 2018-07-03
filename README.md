@@ -17,10 +17,10 @@ result in an Exception.
 
 With XPathArray you get the following:
 
-* Easy `xpath selection` in multiple levels (/customer/address/street, ...)
-* Real `XPathKeyNotFound Exceptions` instead of Notices
-* `Default-Values` for missing keys or values.
-* ...and a more lightweight code...:)
+* Easy **XPath Selection** in multiple levels, e.g. *"/customer/address/street"*
+* Real **XPathKeyNotFound Exceptions** instead of PHP Notices
+* **Default Values** for missing keys or values
+* ...and a more lightweight code... :)
 
 
 ## Installation
