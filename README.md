@@ -38,12 +38,19 @@ $ composer require boxblinkracer/xpatharray
 
 
 ## What now?
-Here are a few examples what to do with XPathArray objects:
+Here are a few examples what to do with XPathArray objects.
+
+
+### With Exceptions 
+In the first example, we access the content of our customer array using XPath syntax.
+If a key is not found, we will get a `XPathNotFoundException`.
+
+This is perfect, if you want to simply **use and validate your structure at once**.
 
 ```php
 <?php
 //...
-$customer = ...
+$customer = array(...)
 
 # xpath array with / as our delimiter
 $xCustomer = new XPathArray('/', $customer);
@@ -53,19 +60,39 @@ $xCustomer = new XPathArray('/', $customer);
 $address = $xCustomer->get('/address');
 
 # multi level access
-/** @var string $phoneMobile */
 $phoneMobile = $xCustomer->get('/contact/phone/mobile');
 
-# object access with optional default value (no exception)
-$street = $xCustomer->get('/street', '-');
+# type safe access with internal conversion
+$street = $xCustomer->getString('/street');
+$streetNumber = $xCustomer->getInt('/streetNr');
+$isCompany = $xCustomer->getBool('/isCompany');
+$customerRevenue = $xCustomer->getFloat('/revenue/total');
+```
 
-# type safe access with optional default values
+### Without Exceptions 
+In the next example, we want to access the same keys, but we do not
+want to get any exceptions. So we just provide a default value, that
+will be returned if the key is either NULL or has not been found at all.
+
+This is perfect, if you want to work with **optional nodes** within your array.
+
+```php
+<?php
+//...
+$customer = array(...)
+
+# xpath array with / as our delimiter
+$xCustomer = new XPathArray('/', $customer);
+
+# multi level access
+$phoneMobile = $xCustomer->get('/contact/phone/mobile', '-');
+
+# type safe access with internal conversion
 $street = $xCustomer->getString('/street', '-');
 $streetNumber = $xCustomer->getInt('/streetNr', 0);
 $isCompany = $xCustomer->getBool('/isCompany', false);
 $customerRevenue = $xCustomer->getFloat('/revenue/total', 0.0);
 ```
-
 
 
 ## Copying / License
