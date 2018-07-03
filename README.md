@@ -10,9 +10,10 @@ XPathArray - Easy XPath Access for your Arrays
 
 ## Why XPathArrays instead of Arrays?
 ...small and simple, but still powerful...
-If you use basic Arrays in PHP you are familiar with the `array_key_exists` functions.
-This blows up your code if you have multiple levels within your array.
-If you don't do this, the only thing you get is a `PHP Notice Error`, and that obviously doesn't 
+If you use basic Arrays in PHP you are familiar with the `array_key_exists` function.
+And yes, this does really blow up your code if you have multiple levels within your array.
+
+If you check for existing keys, the only thing you get is a `PHP Notice Error`, and that obviously doesn't 
 result in an Exception.
 
 With XPathArray you get the following:
