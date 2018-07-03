@@ -44,25 +44,23 @@ class XPathArray
      */
     public function get(string $xpath, $default = null)
     {
-        # no default provided, so use pass
-        # on our exceptions without catching it
-        if ($default === null) {
-            return $this->parser->getValue($xpath, $this->data);
-        }
-
-        # if we have a default, make sure to catch
-        # the not found exception and return the default
         try {
+
             $value = $this->parser->getValue($xpath, $this->data);
 
-            if ($value !== null) {
-                return $value;
-            } else {
+            if ($default !== null && $value === null) {
                 return $default;
             }
 
+            return $value;
+
         } catch (XPathNotFoundException $ex) {
-            return $default;
+
+            if ($default === null) {
+                throw $ex;
+            } else {
+                return $default;
+            }
         }
     }
 
@@ -76,31 +74,27 @@ class XPathArray
      */
     public function getInt(string $xpath, int $default = null): int
     {
-        # no default provided, so use pass
-        # on our exceptions without catching it
-        if ($default === null) {
+        try {
+
             $value = $this->parser->getValue($xpath, $this->data);
 
             if (is_int($value)) {
                 return (int)$value;
             }
 
-            throw new InvalidTypeException('Value for XPath is no Integer');
-        }
-
-        # if we have a default, make sure to catch
-        # the not found exception and return the default
-        try {
-            $value = $this->parser->getValue($xpath, $this->data);
-
-            if (is_int($value)) {
-                return (int)$value;
+            if ($default === null) {
+                throw new InvalidTypeException('Value for XPath ' . $xpath . ' is no Integer');
             }
 
             return $default;
 
         } catch (XPathNotFoundException $ex) {
-            return $default;
+
+            if ($default === null) {
+                throw $ex;
+            } else {
+                return $default;
+            }
         }
     }
 
@@ -114,31 +108,27 @@ class XPathArray
      */
     public function getString(string $xpath, string $default = null): string
     {
-        # no default provided, so use pass
-        # on our exceptions without catching it
-        if ($default === null) {
+        try {
+
             $value = $this->parser->getValue($xpath, $this->data);
 
             if (is_string($value)) {
                 return (string)$value;
             }
 
-            throw new InvalidTypeException('Value for XPath is no String');
-        }
-
-        # if we have a default, make sure to catch
-        # the not found exception and return the default
-        try {
-            $value = $this->parser->getValue($xpath, $this->data);
-
-            if (is_string($value)) {
-                return (string)$value;
+            if ($default === null) {
+                throw new InvalidTypeException('Value for XPath ' . $xpath . ' is no String');
             }
 
             return $default;
 
         } catch (XPathNotFoundException $ex) {
-            return $default;
+
+            if ($default === null) {
+                throw $ex;
+            } else {
+                return $default;
+            }
         }
     }
 
@@ -152,27 +142,8 @@ class XPathArray
      */
     public function getBool(string $xpath, bool $default = null): bool
     {
-        # no default provided, so use pass
-        # on our exceptions without catching it
-        if ($default === null) {
-            $value = $this->parser->getValue($xpath, $this->data);
-
-            if ($value === 1) {
-                return true;
-            } else if ($value === 0) {
-                return false;
-            }
-
-            if (is_bool($value)) {
-                return (bool)$value;
-            }
-
-            throw new InvalidTypeException('Value for XPath is no Bool');
-        }
-
-        # if we have a default, make sure to catch
-        # the not found exception and return the default
         try {
+
             $value = $this->parser->getValue($xpath, $this->data);
 
             if ($value === 1) {
@@ -181,14 +152,29 @@ class XPathArray
                 return false;
             }
 
+            if (strtoupper($value) === "TRUE") {
+                return true;
+            } else if (strtoupper($value) === "FALSE") {
+                return false;
+            }
+
             if (is_bool($value)) {
                 return (bool)$value;
+            }
+
+            if ($default === null) {
+                throw new InvalidTypeException('Value for XPath ' . $xpath . ' is no Bool');
             }
 
             return $default;
 
         } catch (XPathNotFoundException $ex) {
-            return $default;
+
+            if ($default === null) {
+                throw $ex;
+            } else {
+                return $default;
+            }
         }
     }
 
@@ -202,31 +188,27 @@ class XPathArray
      */
     public function getFloat(string $xpath, float $default = null): float
     {
-        # no default provided, so use pass
-        # on our exceptions without catching it
-        if ($default === null) {
+        try {
+
             $value = $this->parser->getValue($xpath, $this->data);
 
             if (is_float($value)) {
                 return (float)$value;
             }
 
-            throw new InvalidTypeException('Value for XPath is no Float');
-        }
-
-        # if we have a default, make sure to catch
-        # the not found exception and return the default
-        try {
-            $value = $this->parser->getValue($xpath, $this->data);
-
-            if (is_float($value)) {
-                return (float)$value;
+            if ($default === null) {
+                throw new InvalidTypeException('Value for XPath ' . $xpath . ' is no Float');
             }
 
             return $default;
 
         } catch (XPathNotFoundException $ex) {
-            return $default;
+
+            if ($default === null) {
+                throw $ex;
+            } else {
+                return $default;
+            }
         }
     }
 

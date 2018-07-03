@@ -8,15 +8,18 @@ use XPathArray\Exceptions\XPathNotFoundException;
 /**
  * Class XPathNotFoundExceptionTest
  * @author Christian Dangl
- * @copyright dasistweb GmbH (http://www.dasistweb.de)
+ * @copyright 2018 by Christian Dangl
  * @package Tests\XPathArray\Exceptions
  */
 class XPathNotFoundExceptionTest extends TestCase
 {
 
     /**
+     * This test verifies that we get the expected
+     * message for our exception. It should always
+     * output our provided XPath in the message.
      * @test
-     * @author Christian Dangl
+     * @author: Christian Dangl
      */
     public function getMessage()
     {

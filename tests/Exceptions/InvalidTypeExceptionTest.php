@@ -9,15 +9,17 @@ use XPathArray\Exceptions\XPathNotFoundException;
 /**
  * Class InvalidTypeExceptionTest
  * @author Christian Dangl
- * @copyright dasistweb GmbH (http://www.dasistweb.de)
+ * @copyright 2018 by Christian Dangl
  * @package Tests\XPathArray\Exceptions
  */
 class InvalidTypeExceptionTest extends TestCase
 {
 
     /**
+     * This test verfies that our provided
+     * message is really reeturned in our getMessage function.
      * @test
-     * @author Christian Dangl
+     * @author: Christian Dangl
      */
     public function getMessage()
     {

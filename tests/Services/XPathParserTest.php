@@ -12,7 +12,7 @@ use XPathArray\XPathArray;
 /**
  * Class XPathParserTest
  * @author Christian Dangl
- * @copyright dasistweb GmbH (http://www.dasistweb.de)
+ * @copyright 2018 by Christian Dangl
  * @package Tests\XPathArray\Services
  */
 class XPathParserTest extends TestCase
@@ -21,9 +21,9 @@ class XPathParserTest extends TestCase
     /**
      * This test verifies that we use
      * our delimiter when searching.
+     * @author: Christian Dangl
      * @test
      * @throws XPathNotFoundException
-     * @author: Christian Dangl
      */
     public function verify_delimiter_is_used()
     {
@@ -42,12 +42,11 @@ class XPathParserTest extends TestCase
     }
 
     /**
-     * This test verifies that we can load
-     * a simple element value from root
-     * without providing a leading slash.
+     * This test verifies that we can load  a simple element
+     * value from root without providing a leading slash.
      * @test
-     * @throws XPathNotFoundException
      * @author: Christian Dangl
+     * @throws XPathNotFoundException
      */
     public function get_simple_element()
     {
@@ -64,12 +63,11 @@ class XPathParserTest extends TestCase
     }
 
     /**
-     * This test verifies that we can load
-     * a simple element value from root
-     * by providing a leading slash.
+     * This test verifies that we can load a simple
+     * element value from root by providing a leading slash.
      * @test
-     * @throws XPathNotFoundException
      * @author: Christian Dangl
+     * @throws XPathNotFoundException
      */
     public function get_simple_element_leading_slash()
     {
@@ -90,8 +88,8 @@ class XPathParserTest extends TestCase
      * a complex value from a sub node by using
      * our xpath string.
      * @test
-     * @throws XPathNotFoundException
      * @author: Christian Dangl
+     * @throws XPathNotFoundException
      */
     public function get_complex_element()
     {
@@ -113,8 +111,8 @@ class XPathParserTest extends TestCase
      * This test verifies that we get a correct
      * exception when our xpath value is not found.
      * @test
-     * @throws XPathNotFoundException
      * @author: Christian Dangl
+     * @throws XPathNotFoundException
      */
     public function get_not_found_exception()
     {

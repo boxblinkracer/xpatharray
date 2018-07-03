@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="../autoload.php" colors="true" stopOnFailure="false" syntaxCheck="true">
+<phpunit bootstrap="./autoload.php" colors="true" stopOnFailure="false" syntaxCheck="true">
 
     <testsuites>
         <testsuite name="XPathArray Unit Tests">
-            <directory>.</directory>
+            <directory>./tests</directory>
         </testsuite>
     </testsuites>
 
