@@ -152,6 +152,12 @@ class XPathArray
                 return false;
             }
 
+            if ($value === '1') {
+                return true;
+            } else if ($value === '0') {
+                return false;
+            }
+
             if (strtoupper($value) === "TRUE") {
                 return true;
             } else if (strtoupper($value) === "FALSE") {

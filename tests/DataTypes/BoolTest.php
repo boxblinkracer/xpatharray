@@ -137,6 +137,8 @@ class BoolTest extends TestCase
             'TRUE' => array(true, "TRUE"),
             'false' => array(false, "false"),
             'FALSE' => array(false, "FALSE"),
+            '1' => array(true, "1"),
+            '0' => array(false, "0"),
         );
     }
 
